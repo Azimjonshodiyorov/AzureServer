@@ -8,22 +8,22 @@ on:
 jobs:
    publish:
       runs-on: ubuntu-latest
-
+      
       steps:
-         - uses: actions/chekout@v3
+       - uses: actions/chekout@v3
 
-         - name: Setup .NET
-          uses: actions/setup-dotnet@v3
+       - name: Setup .NET
+         uses: actions/setup-dotnet@v3
 
-          with:
+         with:
              dotnet-version: '8.0.x'
 
 
-          - name: Restore
-             run: dotnet restore ./AzureServer.sln
+       - name: Restore
+         run: dotnet restore ./AzureServer.sln
 
-          - name: Build
-            run: dotnet build ./AzureServer.sln --configuration Release --no-restore
+       - name: Build
+         run: dotnet build ./AzureServer.sln --configuration Release --no-restore
 
-          -name: Publish
-            run: dotnet publish ./AzureServer.sln --configuration Relese --no-build
+      -name: Publish
+       run: dotnet publish ./AzureServer.sln --configuration Relese --no-build
