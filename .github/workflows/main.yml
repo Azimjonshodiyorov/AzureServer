@@ -1,7 +1,7 @@
 name: Publish🚀
 
 on:
-   workflow_dispatch:
+   workflow:
    push:
        branches:
         -master
