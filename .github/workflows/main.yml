@@ -1,10 +1,10 @@
 name: Publish🚀;
 
 on:
-   workflow_dispatch:
-  push:
+   workflo_dispatch:
+   push:
        branches:
-       -master
+        -master
 jobs:
    publish:
       runs-on: ubuntu-latest
