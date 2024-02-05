@@ -1,27 +1,25 @@
-name: Publish🚀
+name: Build .NET APP
 
 on:
   push:
-     
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
 jobs:
-   publish:
-      runs-on: ubuntu-latest
-      
-      steps:
-       - uses: actions/chekout@v3
+  build:
 
-       - name: Setup .NET
-         uses: actions/setup-dotnet@v3
+    runs-on: ubuntu-latest
 
-         with:
-             dotnet-version: '8.0.x'
-
-
-       - name: Restore
-         run: dotnet restore ./AzureServer.sln
-
-       - name: Build
-         run: dotnet build ./AzureServer.sln --configuration Release --no-restore
-
-       - name: Publish
-         run: dotnet publish ./AzureServer.sln --configuration Relese --no-build
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
